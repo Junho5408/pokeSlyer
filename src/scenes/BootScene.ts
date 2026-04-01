@@ -1,4 +1,7 @@
 import Phaser from 'phaser'
+import atImg from '@ui/img/at.png'
+import skImg from '@ui/img/sk.png'
+import pwImg from '@ui/img/pw.png'
 
 export class BootScene extends Phaser.Scene {
   constructor() {
@@ -6,8 +9,9 @@ export class BootScene extends Phaser.Scene {
   }
 
   preload(): void {
-    // TODO: 에셋 로드
-    // this.load.image('card_back', 'assets/images/cards/back.png')
+    this.load.image('card_at', atImg)
+    this.load.image('card_sk', skImg)
+    this.load.image('card_pw', pwImg)
   }
 
   create(): void {
