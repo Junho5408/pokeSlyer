@@ -33,11 +33,11 @@ export class ShopScene extends Phaser.Scene {
     this.add.rectangle(width / 2, height / 2, width, height, 0x0d0a05)
 
     this.add.text(width / 2, 38, '상점', {
-      fontSize: '30px', color: '#ffcc44', fontStyle: 'bold',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '30px', color: '#ffcc44', fontStyle: 'bold',
     }).setOrigin(0.5)
 
     this.goldText = this.add.text(width / 2, 74, `골드: ${run.gold}`, {
-      fontSize: '18px', color: '#ffcc44',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '18px', color: '#ffcc44',
     }).setOrigin(0.5)
 
     this.shopView = this.add.container(0, 0)
@@ -51,7 +51,7 @@ export class ShopScene extends Phaser.Scene {
 
     // 나가기 버튼 (항상 표시)
     const leaveBtn = this.add.text(width / 2, height - 38, '상점 나가기', {
-      fontSize: '17px', color: '#777777',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '17px', color: '#777777',
       backgroundColor: '#1a1a1a', padding: { x: 22, y: 8 },
     }).setOrigin(0.5).setInteractive({ useHandCursor: true })
     leaveBtn.on('pointerover', () => leaveBtn.setStyle({ color: '#ffffff' }))
@@ -73,7 +73,7 @@ export class ShopScene extends Phaser.Scene {
     }
 
     this.shopView.add(
-      this.add.text(width / 2, 108, '── 카드 ──', { fontSize: '13px', color: '#777777' }).setOrigin(0.5)
+      this.add.text(width / 2, 108, '── 카드 ──', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#777777' }).setOrigin(0.5)
     )
 
     const cardW = 128
@@ -88,12 +88,12 @@ export class ShopScene extends Phaser.Scene {
 
     // 카드 제거 서비스
     this.shopView.add(
-      this.add.text(width / 2, 432, '── 서비스 ──', { fontSize: '13px', color: '#777777' }).setOrigin(0.5)
+      this.add.text(width / 2, 432, '── 서비스 ──', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#777777' }).setOrigin(0.5)
     )
 
     const canRemove = run.gold >= REMOVAL_COST && run.deck.length > 1
     const removeBtn = this.add.text(width / 2, 480, `카드 제거  ${REMOVAL_COST}G`, {
-      fontSize: '17px',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '17px',
       color: canRemove ? '#ffaaaa' : '#443333',
       backgroundColor: '#2a1a1a', padding: { x: 18, y: 8 },
     }).setOrigin(0.5)
@@ -111,7 +111,7 @@ export class ShopScene extends Phaser.Scene {
 
     this.shopView.add(
       this.add.text(width / 2, 516, '덱에서 카드 1장을 영구 제거합니다', {
-        fontSize: '11px', color: '#555555',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '11px', color: '#555555',
       }).setOrigin(0.5)
     )
   }
@@ -143,21 +143,21 @@ export class ShopScene extends Phaser.Scene {
 
     c.add(this.add.circle(-cardW / 2 + 13, -cardH / 2 + 13, 11, 0x111133))
     c.add(this.add.text(-cardW / 2 + 13, -cardH / 2 + 13, String(def.cost), {
-      fontSize: '11px', color: '#ffdd44', fontStyle: 'bold',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '11px', color: '#ffdd44', fontStyle: 'bold',
     }).setOrigin(0.5))
     c.add(this.add.text(0, -cardH / 2 + 30, def.name, {
-      fontSize: '12px', color: '#ffffff', fontStyle: 'bold',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '12px', color: '#ffffff', fontStyle: 'bold',
       wordWrap: { width: cardW - 10 }, align: 'center',
     }).setOrigin(0.5, 0))
     c.add(this.add.text(0, -cardH / 2 + 54, def.type, {
-      fontSize: '9px', color: '#aaaaaa',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '9px', color: '#aaaaaa',
     }).setOrigin(0.5, 0))
     c.add(this.add.text(0, -cardH / 2 + 68, def.description, {
-      fontSize: '9px', color: '#dddddd',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '9px', color: '#dddddd',
       wordWrap: { width: cardW - 12 }, align: 'center',
     }).setOrigin(0.5, 0))
     c.add(this.add.text(0, cardH / 2 + 13, `${price}G`, {
-      fontSize: '14px',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px',
       color: canAfford ? '#ffcc44' : '#665522',
       fontStyle: 'bold',
     }).setOrigin(0.5))
@@ -176,12 +176,12 @@ export class ShopScene extends Phaser.Scene {
 
     this.removeView.add(
       this.add.text(width / 2, 80, '제거할 카드 선택', {
-        fontSize: '22px', color: '#ffaaaa', fontStyle: 'bold',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '22px', color: '#ffaaaa', fontStyle: 'bold',
       }).setOrigin(0.5)
     )
     this.removeView.add(
       this.add.text(width / 2, 114, `비용: ${REMOVAL_COST}G  |  현재 덱: ${run.deck.length}장`, {
-        fontSize: '13px', color: '#888888',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#888888',
       }).setOrigin(0.5)
     )
 
@@ -211,20 +211,20 @@ export class ShopScene extends Phaser.Scene {
       c.add(bg)
 
       c.add(this.add.text(0, -cardH / 2 + 16, def.name, {
-        fontSize: '11px', color: '#ffffff', fontStyle: 'bold',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '11px', color: '#ffffff', fontStyle: 'bold',
         wordWrap: { width: cardW - 8 }, align: 'center',
       }).setOrigin(0.5, 0))
       c.add(this.add.text(0, -cardH / 2 + 38, def.type, {
-        fontSize: '9px', color: '#aaaaaa',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '9px', color: '#aaaaaa',
       }).setOrigin(0.5, 0))
       c.add(this.add.text(0, -cardH / 2 + 52, def.description, {
-        fontSize: '9px', color: '#cccccc',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '9px', color: '#cccccc',
         wordWrap: { width: cardW - 8 }, align: 'center',
       }).setOrigin(0.5, 0))
 
       if (count > 1) {
         c.add(this.add.text(cardW / 2 - 4, -cardH / 2 + 4, `x${count}`, {
-          fontSize: '10px', color: '#88ff88',
+          fontFamily: '"Noto Sans KR", sans-serif', fontSize: '10px', color: '#88ff88',
         }).setOrigin(1, 0))
       }
 
@@ -241,7 +241,7 @@ export class ShopScene extends Phaser.Scene {
 
     // 취소 버튼
     const cancelBtn = this.add.text(width / 2, height - 90, '취소', {
-      fontSize: '17px', color: '#888888',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '17px', color: '#888888',
       backgroundColor: '#222222', padding: { x: 20, y: 8 },
     }).setOrigin(0.5).setInteractive({ useHandCursor: true })
     cancelBtn.on('pointerover', () => cancelBtn.setStyle({ color: '#ffffff' }))

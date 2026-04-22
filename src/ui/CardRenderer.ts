@@ -71,7 +71,7 @@ export function buildCard(
     const costX = left + w * 0.145
     const costY = top + h * 0.11
     c.add(scene.add.text(costX, costY, String(def.cost), {
-      fontSize: `${Math.round(w * 0.13)}px`,
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.round(w * 0.13)}px`,
       color: '#ffffff',
       fontStyle: 'bold',
       stroke: '#000000',
@@ -82,7 +82,7 @@ export function buildCard(
     const displayName = isUpgraded ? `${def.name}+` : def.name
     const nameY = h * 0.16
     c.add(scene.add.text(0, nameY, displayName, {
-      fontSize: `${Math.max(9, Math.round(w * 0.09))}px`,
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.max(9, Math.round(w * 0.09))}px`,
       color: isUpgraded ? '#884400' : '#1a0a00',
       fontStyle: 'bold',
       wordWrap: { width: w * 0.68 },
@@ -93,7 +93,7 @@ export function buildCard(
     const desc = isUpgraded ? (def.upgradedDescription ?? def.description) : def.description
     const descY = h * 0.27
     c.add(scene.add.text(0, descY, desc, {
-      fontSize: `${Math.max(7, Math.round(w * 0.072))}px`,
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.max(7, Math.round(w * 0.072))}px`,
       color: '#2a1500',
       wordWrap: { width: w * 0.68 },
       align: 'center',
@@ -155,16 +155,16 @@ export function buildCard(
     c.add(gemG)
 
     c.add(scene.add.text(gemX, gemY, String(def.cost), {
-      fontSize: `${Math.round(w * 0.11)}px`, color: '#ffdd44', fontStyle: 'bold',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.round(w * 0.11)}px`, color: '#ffdd44', fontStyle: 'bold',
     }).setOrigin(0.5))
 
     c.add(scene.add.text(left + w - 5, top + 5, TYPE_LABELS[def.type] ?? def.type, {
-      fontSize: `${Math.max(8, Math.round(w * 0.075))}px`, color: '#8899bb',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.max(8, Math.round(w * 0.075))}px`, color: '#8899bb',
     }).setOrigin(1, 0))
 
     const displayName = isUpgraded ? `${def.name}+` : def.name
     c.add(scene.add.text(0, contentTop, displayName, {
-      fontSize: `${Math.max(10, Math.round(w * 0.1))}px`,
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.max(10, Math.round(w * 0.1))}px`,
       color: isUpgraded ? '#ffdd88' : '#ffffff',
       fontStyle: 'bold',
       wordWrap: { width: w - 14 },
@@ -173,7 +173,7 @@ export function buildCard(
 
     const desc = isUpgraded ? (def.upgradedDescription ?? def.description) : def.description
     c.add(scene.add.text(0, contentTop + Math.round(h * 0.13), desc, {
-      fontSize: `${Math.max(8, Math.round(w * 0.075))}px`,
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.max(8, Math.round(w * 0.075))}px`,
       color: '#ccccdd',
       wordWrap: { width: w - 16 },
       align: 'center',
@@ -183,7 +183,7 @@ export function buildCard(
   // ── 구매 가격 ──────────────────────────────────────────
   if (opts.showPrice !== undefined) {
     c.add(scene.add.text(0, bot + Math.round(h * 0.1), `${opts.showPrice}G`, {
-      fontSize: `${Math.max(12, Math.round(w * 0.115))}px`,
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.max(12, Math.round(w * 0.115))}px`,
       color: dimmed ? '#665522' : '#ffcc44',
       fontStyle: 'bold',
     }).setOrigin(0.5))

@@ -23,12 +23,12 @@ export class DeckViewerScene extends Phaser.Scene {
 
     // 제목
     this.add.text(width / 2, 34, `덱 (${run.deck.length}장)`, {
-      fontSize: '22px', color: '#ffddaa', fontStyle: 'bold',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '22px', color: '#ffddaa', fontStyle: 'bold',
     }).setOrigin(0.5)
 
     // 닫기 버튼
     const closeBtn = this.add.text(width - 14, 14, '✕', {
-      fontSize: '18px', color: '#aaaaaa',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '18px', color: '#aaaaaa',
       backgroundColor: '#222222', padding: { x: 10, y: 6 },
     }).setOrigin(1, 0).setInteractive({ useHandCursor: true })
     closeBtn.on('pointerover', () => closeBtn.setStyle({ color: '#ffffff' }))
@@ -69,38 +69,38 @@ export class DeckViewerScene extends Phaser.Scene {
       // 비용 원
       c.add(this.add.circle(-cardW / 2 + 10, -cardH / 2 + 10, 9, 0x111133))
       c.add(this.add.text(-cardW / 2 + 10, -cardH / 2 + 10, String(def.cost), {
-        fontSize: '10px', color: '#ffdd44', fontStyle: 'bold',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '10px', color: '#ffdd44', fontStyle: 'bold',
       }).setOrigin(0.5))
 
       // 이름 (+강화 표시)
       const label = isUpgraded ? `${def.name}+` : def.name
       c.add(this.add.text(0, -cardH / 2 + 14, label, {
-        fontSize: '10px', color: isUpgraded ? '#ffdd88' : '#ffffff', fontStyle: 'bold',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '10px', color: isUpgraded ? '#ffdd88' : '#ffffff', fontStyle: 'bold',
         wordWrap: { width: cardW - 10 }, align: 'center',
       }).setOrigin(0.5, 0))
 
       // 타입
       c.add(this.add.text(0, -cardH / 2 + 35, def.type, {
-        fontSize: '8px', color: '#aaaaaa',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '8px', color: '#aaaaaa',
       }).setOrigin(0.5, 0))
 
       // 설명
       const desc = isUpgraded ? (def.upgradedDescription ?? def.description) : def.description
       c.add(this.add.text(0, -cardH / 2 + 48, desc, {
-        fontSize: '8px', color: '#dddddd',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '8px', color: '#dddddd',
         wordWrap: { width: cardW - 10 }, align: 'center',
       }).setOrigin(0.5, 0))
 
       // 수량
       if (count > 1) {
         c.add(this.add.text(cardW / 2 - 4, -cardH / 2 + 4, `x${count}`, {
-          fontSize: '9px', color: '#88ff88',
+          fontFamily: '"Noto Sans KR", sans-serif', fontSize: '9px', color: '#88ff88',
         }).setOrigin(1, 0))
       }
     })
 
     this.add.text(width / 2, height - 22, 'ESC 또는 배경 클릭으로 닫기', {
-      fontSize: '11px', color: '#333333',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '11px', color: '#333333',
     }).setOrigin(0.5)
 
     this.input.keyboard?.on('keydown-ESC', () => this.scene.stop())

@@ -43,7 +43,7 @@ export class EventScene extends Phaser.Scene {
 
     // 제목
     this.add.text(width / 2, 110, event.title, {
-      fontSize: '30px', color: '#ffddaa', fontStyle: 'bold',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '30px', color: '#ffddaa', fontStyle: 'bold',
     }).setOrigin(0.5)
 
     // 구분선
@@ -53,7 +53,7 @@ export class EventScene extends Phaser.Scene {
 
     // 본문 텍스트
     this.add.text(width / 2, 175, event.flavor, {
-      fontSize: '17px', color: '#cccccc',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '17px', color: '#cccccc',
       wordWrap: { width: width - 250 }, align: 'center', lineSpacing: 8,
     }).setOrigin(0.5, 0)
 
@@ -64,7 +64,7 @@ export class EventScene extends Phaser.Scene {
     event.choices.forEach((choice, i) => {
       const disabled = choice.isDisabled(run)
       const btn = this.add.text(width / 2, btnStartY + i * 90, choice.label, {
-        fontSize: '19px',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '19px',
         color: disabled ? '#444444' : '#eeeeee',
         backgroundColor: disabled ? '#0d0d0d' : '#1a1a2e',
         padding: { x: 30, y: 13 },
@@ -88,7 +88,7 @@ export class EventScene extends Phaser.Scene {
 
       // 설명
       this.add.text(width / 2, btnStartY + i * 90 + 30, choice.detail, {
-        fontSize: '11px', color: '#556677',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '11px', color: '#556677',
       }).setOrigin(0.5, 0)
     })
   }
@@ -104,12 +104,12 @@ export class EventScene extends Phaser.Scene {
       .setStrokeStyle(1, 0x334466)
 
     this.add.text(width / 2, height / 2 - 30, message, {
-      fontSize: '20px', color: '#ffffff',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '20px', color: '#ffffff',
       wordWrap: { width: width - 260 }, align: 'center', lineSpacing: 10,
     }).setOrigin(0.5)
 
     const continueBtn = this.add.text(width / 2, height / 2 + 90, '계속하기', {
-      fontSize: '20px', color: '#aaaaaa',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '20px', color: '#aaaaaa',
       backgroundColor: '#1a1a1a', padding: { x: 28, y: 12 },
     }).setOrigin(0.5).setInteractive({ useHandCursor: true })
 

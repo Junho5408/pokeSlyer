@@ -22,10 +22,10 @@ export class RewardScene extends Phaser.Scene {
     this.add.rectangle(width / 2, height / 2, width, height, 0x0a0a1a)
 
     this.add.text(width / 2, 55, '카드 보상', {
-      fontSize: '30px', color: '#ffdd88', fontStyle: 'bold',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '30px', color: '#ffdd88', fontStyle: 'bold',
     }).setOrigin(0.5)
     this.add.text(width / 2, 96, '카드 1장을 선택하여 덱에 추가하세요', {
-      fontSize: '15px', color: '#aaaaaa',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '15px', color: '#aaaaaa',
     }).setOrigin(0.5)
 
     // LootRNG로 3장 랜덤 선택 (중복 없음)
@@ -50,7 +50,7 @@ export class RewardScene extends Phaser.Scene {
     // 스킵 버튼
     const skipBtn = this.add
       .text(width / 2, height - 70, '스킵 (Skip)', {
-        fontSize: '18px', color: '#777777',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '18px', color: '#777777',
         backgroundColor: '#1a1a1a', padding: { x: 24, y: 10 },
       })
       .setOrigin(0.5)
@@ -83,23 +83,23 @@ export class RewardScene extends Phaser.Scene {
     // 비용 원
     c.add(this.add.circle(-cardW / 2 + 16, -cardH / 2 + 16, 14, 0x111133))
     c.add(this.add.text(-cardW / 2 + 16, -cardH / 2 + 16, String(def.cost), {
-      fontSize: '14px', color: '#ffdd44', fontStyle: 'bold',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px', color: '#ffdd44', fontStyle: 'bold',
     }).setOrigin(0.5))
 
     // 카드명
     c.add(this.add.text(0, -cardH / 2 + 36, def.name, {
-      fontSize: '14px', color: '#ffffff', fontStyle: 'bold',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px', color: '#ffffff', fontStyle: 'bold',
       wordWrap: { width: cardW - 12 }, align: 'center',
     }).setOrigin(0.5, 0))
 
     // 타입
     c.add(this.add.text(0, -cardH / 2 + 64, def.type, {
-      fontSize: '10px', color: '#aaaaaa',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '10px', color: '#aaaaaa',
     }).setOrigin(0.5, 0))
 
     // 설명
     c.add(this.add.text(0, -cardH / 2 + 82, def.description, {
-      fontSize: '10px', color: '#dddddd',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '10px', color: '#dddddd',
       wordWrap: { width: cardW - 16 }, align: 'center',
     }).setOrigin(0.5, 0))
 
@@ -108,7 +108,7 @@ export class RewardScene extends Phaser.Scene {
       COMMON: '#cccccc', UNCOMMON: '#44aaff', RARE: '#ffaa44',
     }
     c.add(this.add.text(0, cardH / 2 - 14, def.rarity, {
-      fontSize: '10px', color: rarityColor[def.rarity] ?? '#cccccc',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '10px', color: rarityColor[def.rarity] ?? '#cccccc',
     }).setOrigin(0.5))
   }
 }

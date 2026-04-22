@@ -6,7 +6,7 @@ import Phaser from 'phaser'
 export function addDeckButton(scene: Phaser.Scene): void {
   const { width } = scene.scale
   const btn = scene.add.text(width - 12, 12, '덱 보기', {
-    fontSize: '13px', color: '#aaaaaa',
+    fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#aaaaaa',
     backgroundColor: '#1a1a1a', padding: { x: 10, y: 6 },
   }).setOrigin(1, 0).setDepth(100).setInteractive({ useHandCursor: true })
 

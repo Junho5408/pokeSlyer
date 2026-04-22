@@ -106,7 +106,7 @@ export class MapScene extends Phaser.Scene {
 
     // 층수 (중앙)
     this.add.text(width / 2, 14, `층  ${run.floor} / 15`, {
-      fontSize: '16px', color: '#9999cc', fontStyle: 'bold',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '16px', color: '#9999cc', fontStyle: 'bold',
     }).setOrigin(0.5, 0)
 
     // HP 바 (좌측)
@@ -120,19 +120,19 @@ export class MapScene extends Phaser.Scene {
     hpG.lineStyle(1, 0x552222, 0.8)
     hpG.strokeRoundedRect(12, 10, hpBarW, 14, 3)
     this.add.text(12 + hpBarW / 2, 10, `HP  ${run.hp} / ${run.maxHp}`, {
-      fontSize: '11px', color: '#ffaaaa',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '11px', color: '#ffaaaa',
     }).setOrigin(0.5, 0)
 
     // 골드 (HP 바 오른쪽)
     this.add.text(185, 14, `💰 ${run.gold} G`, {
-      fontSize: '14px', color: '#ffcc44',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px', color: '#ffcc44',
     }).setOrigin(0, 0)
 
     // 유물 (중앙 아래)
     const relicNames = run.relics.map(r => r.defId).join('  ·  ')
     if (relicNames) {
       this.add.text(width / 2, 34, `유물: ${relicNames}`, {
-        fontSize: '10px', color: '#8888bb',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '10px', color: '#8888bb',
       }).setOrigin(0.5, 0)
     }
   }
@@ -207,12 +207,12 @@ export class MapScene extends Phaser.Scene {
     // 아이콘 텍스트
     const iconColor = isVisited ? '#444466' : '#ffffff'
     this.add.text(x, dy, style.icon, {
-      fontSize: `${isBoss ? 16 : 13}px`, color: iconColor,
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${isBoss ? 16 : 13}px`, color: iconColor,
     }).setOrigin(0.5)
 
     // 노드 라벨 (아래)
     this.add.text(x, dy + radius + 5, NODE_LABELS[node.type] ?? node.type, {
-      fontSize: '9px', color: isAccessible ? '#ddddff' : (isVisited ? '#334455' : '#556677'),
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '9px', color: isAccessible ? '#ddddff' : (isVisited ? '#334455' : '#556677'),
     }).setOrigin(0.5, 0)
 
     // 접근 가능한 노드: 클릭 영역 + 펄스 애니메이션
@@ -300,7 +300,7 @@ export class MapScene extends Phaser.Scene {
       cG.fillStyle(item.color, 0.9)
       cG.fillCircle(lx - 24, ly, 5)
       this.add.text(lx - 16, ly, item.label, {
-        fontSize: '11px', color: '#aaaaaa',
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '11px', color: '#aaaaaa',
       }).setOrigin(0, 0.5)
     })
   }
