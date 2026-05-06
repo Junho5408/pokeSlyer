@@ -73,29 +73,29 @@ export class ShopScene extends Phaser.Scene {
     }
 
     this.shopView.add(
-      this.add.text(width / 2, 108, '── 카드 ──', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#777777' }).setOrigin(0.5)
+      this.add.text(width / 2, 160, '── 카드 ──', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '18px', color: '#777777' }).setOrigin(0.5)
     )
 
-    const cardW = 128
-    const gap = 16
+    const cardW = 180
+    const gap = 24
     const totalW = picks.length * cardW + (picks.length - 1) * gap
     const startX = width / 2 - totalW / 2 + cardW / 2
     picks.forEach((defId, i) => {
       const def = getCardDef(defId)
       const price = CARD_PRICE[def.rarity] ?? 100
-      this.buildShopCard(def, startX + i * (cardW + gap), 270, price, run)
+      this.buildShopCard(def, startX + i * (cardW + gap), 400, price, run)
     })
 
     // 카드 제거 서비스
     this.shopView.add(
-      this.add.text(width / 2, 432, '── 서비스 ──', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#777777' }).setOrigin(0.5)
+      this.add.text(width / 2, 650, '── 서비스 ──', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '18px', color: '#777777' }).setOrigin(0.5)
     )
 
     const canRemove = run.gold >= REMOVAL_COST && run.deck.length > 1
-    const removeBtn = this.add.text(width / 2, 480, `카드 제거  ${REMOVAL_COST}G`, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '17px',
+    const removeBtn = this.add.text(width / 2, 720, `카드 제거  ${REMOVAL_COST}G`, {
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '22px',
       color: canRemove ? '#ffaaaa' : '#443333',
-      backgroundColor: '#2a1a1a', padding: { x: 18, y: 8 },
+      backgroundColor: '#2a1a1a', padding: { x: 24, y: 12 },
     }).setOrigin(0.5)
     this.shopView.add(removeBtn)
 
@@ -110,15 +110,15 @@ export class ShopScene extends Phaser.Scene {
     }
 
     this.shopView.add(
-      this.add.text(width / 2, 516, '덱에서 카드 1장을 영구 제거합니다', {
-        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '11px', color: '#555555',
+      this.add.text(width / 2, 778, '덱에서 카드 1장을 영구 제거합니다', {
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px', color: '#555555',
       }).setOrigin(0.5)
     )
   }
 
   private buildShopCard(def: CardDef, x: number, y: number, price: number, run: RunState): void {
-    const cardW = 128
-    const cardH = 165
+    const cardW = 180
+    const cardH = 240
     const canAfford = run.gold >= price
 
     const c = this.add.container(x, y)
@@ -129,7 +129,7 @@ export class ShopScene extends Phaser.Scene {
 
     if (canAfford) {
       bg.setInteractive({ useHandCursor: true })
-      bg.on('pointerover', () => { bg.setStrokeStyle(3, 0xffdd44); c.setY(y - 8) })
+      bg.on('pointerover', () => { bg.setStrokeStyle(3, 0xffdd44); c.setY(y - 10) })
       bg.on('pointerout', () => { bg.setStrokeStyle(2, 0x666666); c.setY(y) })
       bg.on('pointerdown', () => {
         run.gold -= price
@@ -141,23 +141,23 @@ export class ShopScene extends Phaser.Scene {
       })
     }
 
-    c.add(this.add.circle(-cardW / 2 + 13, -cardH / 2 + 13, 11, 0x111133))
-    c.add(this.add.text(-cardW / 2 + 13, -cardH / 2 + 13, String(def.cost), {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '11px', color: '#ffdd44', fontStyle: 'bold',
+    c.add(this.add.circle(-cardW / 2 + 18, -cardH / 2 + 18, 15, 0x111133))
+    c.add(this.add.text(-cardW / 2 + 18, -cardH / 2 + 18, String(def.cost), {
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '15px', color: '#ffdd44', fontStyle: 'bold',
     }).setOrigin(0.5))
-    c.add(this.add.text(0, -cardH / 2 + 30, def.name, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '12px', color: '#ffffff', fontStyle: 'bold',
-      wordWrap: { width: cardW - 10 }, align: 'center',
+    c.add(this.add.text(0, -cardH / 2 + 44, def.name, {
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '16px', color: '#ffffff', fontStyle: 'bold',
+      wordWrap: { width: cardW - 14 }, align: 'center',
     }).setOrigin(0.5, 0))
-    c.add(this.add.text(0, -cardH / 2 + 54, def.type, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '9px', color: '#aaaaaa',
+    c.add(this.add.text(0, -cardH / 2 + 78, def.type, {
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '12px', color: '#aaaaaa',
     }).setOrigin(0.5, 0))
-    c.add(this.add.text(0, -cardH / 2 + 68, def.description, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '9px', color: '#dddddd',
-      wordWrap: { width: cardW - 12 }, align: 'center',
+    c.add(this.add.text(0, -cardH / 2 + 100, def.description, {
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#dddddd',
+      wordWrap: { width: cardW - 16 }, align: 'center',
     }).setOrigin(0.5, 0))
-    c.add(this.add.text(0, cardH / 2 + 13, `${price}G`, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px',
+    c.add(this.add.text(0, cardH / 2 + 18, `${price}G`, {
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '18px',
       color: canAfford ? '#ffcc44' : '#665522',
       fontStyle: 'bold',
     }).setOrigin(0.5))

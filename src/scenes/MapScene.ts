@@ -8,8 +8,8 @@ const COMBAT_ENEMIES = ['goblin', 'lancer', 'cultist', 'jaw_worm', 'louse']
 const ELITE_ENEMY = 'bandit_leader'
 const BOSS_ENEMY = 'guardian'
 
-// 노드 y(720~45) → 화면 y(660~60) 변환
-const toDisplayY = (nodeY: number) => 60 + ((nodeY - 45) / 675) * 600
+// 노드 y(720~45) → 화면 y(980~90) 변환 (1920x1080 기준)
+const toDisplayY = (nodeY: number) => 90 + ((nodeY - 45) / 675) * 890
 
 // 노드 타입별 색상 & 아이콘
 const NODE_STYLE: Record<string, { color: number; icon: string; glowColor: number }> = {
@@ -100,39 +100,39 @@ export class MapScene extends Phaser.Scene {
     // HUD 배경 바
     const hudG = this.add.graphics()
     hudG.fillStyle(0x000000, 0.55)
-    hudG.fillRect(0, 0, width, 56)
+    hudG.fillRect(0, 0, width, 76)
     hudG.lineStyle(1, 0x223355, 0.6)
-    hudG.lineBetween(0, 56, width, 56)
+    hudG.lineBetween(0, 76, width, 76)
 
     // 층수 (중앙)
-    this.add.text(width / 2, 14, `층  ${run.floor} / 15`, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '16px', color: '#9999cc', fontStyle: 'bold',
+    this.add.text(width / 2, 18, `층  ${run.floor} / 15`, {
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '22px', color: '#9999cc', fontStyle: 'bold',
     }).setOrigin(0.5, 0)
 
     // HP 바 (좌측)
-    const hpBarW = 160
+    const hpBarW = 240
     const hpRatio = Math.max(0, run.hp / run.maxHp)
     const hpG = this.add.graphics()
     hpG.fillStyle(0x441111)
-    hpG.fillRoundedRect(12, 10, hpBarW, 14, 3)
+    hpG.fillRoundedRect(16, 14, hpBarW, 20, 4)
     hpG.fillStyle(hpRatio > 0.5 ? 0xcc3333 : (hpRatio > 0.25 ? 0xcc8822 : 0xff2222))
-    hpG.fillRoundedRect(12, 10, hpBarW * hpRatio, 14, 3)
+    hpG.fillRoundedRect(16, 14, hpBarW * hpRatio, 20, 4)
     hpG.lineStyle(1, 0x552222, 0.8)
-    hpG.strokeRoundedRect(12, 10, hpBarW, 14, 3)
-    this.add.text(12 + hpBarW / 2, 10, `HP  ${run.hp} / ${run.maxHp}`, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#ffaaaa',
+    hpG.strokeRoundedRect(16, 14, hpBarW, 20, 4)
+    this.add.text(16 + hpBarW / 2, 14, `HP  ${run.hp} / ${run.maxHp}`, {
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '15px', color: '#ffaaaa',
     }).setOrigin(0.5, 0)
 
     // 골드 (HP 바 오른쪽)
-    this.add.text(185, 14, `💰 ${run.gold} G`, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px', color: '#ffcc44',
+    this.add.text(272, 18, `💰 ${run.gold} G`, {
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '20px', color: '#ffcc44',
     }).setOrigin(0, 0)
 
     // 유물 (중앙 아래)
     const relicNames = run.relics.map(r => r.defId).join('  ·  ')
     if (relicNames) {
-      this.add.text(width / 2, 34, `유물: ${relicNames}`, {
-        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '12px', color: '#8888bb',
+      this.add.text(width / 2, 48, `유물: ${relicNames}`, {
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '16px', color: '#8888bb',
       }).setOrigin(0.5, 0)
     }
   }
@@ -286,7 +286,7 @@ export class MapScene extends Phaser.Scene {
     const { width, height } = this.scale
     const legendG = this.add.graphics()
     legendG.fillStyle(0x000000, 0.4)
-    legendG.fillRect(0, height - 28, width, 28)
+    legendG.fillRect(0, height - 40, width, 40)
 
     const items = Object.entries(NODE_STYLE).map(([type, s]) => ({
       color: s.color, label: NODE_LABELS[type] ?? type,
@@ -295,7 +295,7 @@ export class MapScene extends Phaser.Scene {
     const spacing = width / items.length
     items.forEach((item, i) => {
       const lx = spacing * i + spacing / 2
-      const ly = height - 14
+      const ly = height - 20
       const cG = this.add.graphics()
       cG.fillStyle(item.color, 0.9)
       cG.fillCircle(lx - 24, ly, 5)

@@ -9,10 +9,10 @@ import { getEnemyDef } from '@data/enemies/index'
 import { buildCard } from '@ui/CardRenderer'
 
 // ── 카드 UI 상수 ──────────────────────────
-const CARD_W = 110
-const CARD_H = 150
-const CARD_GAP = 8
-const HAND_Y = 590
+const CARD_W = 150
+const CARD_H = 210
+const CARD_GAP = 12
+const HAND_Y = 880
 
 // ── 적 캐릭터 색상 테마 ────────────────────
 const ENEMY_THEMES: Record<string, { body: number; head: number; stroke: number }> = {
@@ -92,8 +92,8 @@ export class CombatScene extends Phaser.Scene {
     }
 
     // 배경
-    this.add.rectangle(640, 360, 1280, 720, 0x1a1a2e)
-    this.add.line(640, 430, 0, 0, 1280, 0, 0x333355).setLineWidth(1)
+    this.add.rectangle(960, 540, 1920, 1080, 0x1a1a2e)
+    this.add.line(960, 645, 0, 0, 1920, 0, 0x333355).setLineWidth(1)
 
     this.buildStaticUI()
     this.manager.startCombat()
@@ -105,16 +105,16 @@ export class CombatScene extends Phaser.Scene {
   // ─────────────────────────────────────────────
   private buildStaticUI(): void {
     // 플레이어 HUD 컨테이너
-    this.playerHud = this.add.container(30, 445)
+    this.playerHud = this.add.container(40, 660)
 
     // 더미 카운트
-    this.pileText = this.add.text(30, 700, '', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '15px', color: '#888888' })
+    this.pileText = this.add.text(40, 1040, '', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '17px', color: '#888888' })
 
     // 턴 종료 버튼
     this.endTurnBtn = this.add
-      .text(1200, 620, '턴 종료 [E]', {
-        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '15px', color: '#ffffff',
-        backgroundColor: '#334422', padding: { x: 12, y: 8 },
+      .text(1800, 920, '턴 종료 [E]', {
+        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '22px', color: '#ffffff',
+        backgroundColor: '#334422', padding: { x: 18, y: 12 },
       })
       .setOrigin(0.5)
       .setInteractive({ useHandCursor: true })
@@ -124,13 +124,13 @@ export class CombatScene extends Phaser.Scene {
     this.input.keyboard?.on('keydown-E', () => { void this.handleEndTurn() })
 
     // 전투 로그
-    this.logText = this.add.text(870, 440, '', {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#999999', wordWrap: { width: 370 },
+    this.logText = this.add.text(1300, 660, '', {
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '15px', color: '#999999', wordWrap: { width: 560 },
     })
 
     // 알림 텍스트
     this.alertText = this.add
-      .text(640, 390, '', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '18px', color: '#ff6666', fontStyle: 'bold' })
+      .text(960, 580, '', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '26px', color: '#ff6666', fontStyle: 'bold' })
       .setOrigin(0.5)
       .setAlpha(0)
   }
@@ -152,10 +152,10 @@ export class CombatScene extends Phaser.Scene {
     const r = this.manager.state.player.resource
 
     // HP 바
-    const bw = 200
-    this.playerHud.add(this.add.rectangle(0, 0, bw, 16, 0x552222).setOrigin(0, 0.5))
+    const bw = 300
+    this.playerHud.add(this.add.rectangle(0, 0, bw, 22, 0x552222).setOrigin(0, 0.5))
     const hpFill = Math.max(0, r.hp / r.maxHp)
-    this.playerHud.add(this.add.rectangle(0, 0, bw * hpFill, 16, 0xcc3333).setOrigin(0, 0.5))
+    this.playerHud.add(this.add.rectangle(0, 0, bw * hpFill, 22, 0xcc3333).setOrigin(0, 0.5))
     this.playerHud.add(
       this.add.text(bw / 2, 0, `HP ${r.hp} / ${r.maxHp}`, { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px', color: '#fff' }).setOrigin(0.5)
     )
@@ -186,11 +186,11 @@ export class CombatScene extends Phaser.Scene {
     this.enemyContainers.clear()
 
     const alive = this.manager.state.enemies.filter(e => e.isAlive)
-    const spacing = 1280 / (alive.length + 1)
+    const spacing = 1920 / (alive.length + 1)
 
     alive.forEach((enemy, i) => {
       const x = spacing * (i + 1)
-      const container = this.buildEnemyView(enemy, x, 190)
+      const container = this.buildEnemyView(enemy, x, 285)
       this.enemyContainers.set(enemy.id, container)
     })
   }
@@ -358,7 +358,7 @@ export class CombatScene extends Phaser.Scene {
     if (hand.length === 0) return
 
     const totalW = hand.length * (CARD_W + CARD_GAP) - CARD_GAP
-    const startX = 640 - totalW / 2 + CARD_W / 2
+    const startX = 960 - totalW / 2 + CARD_W / 2
 
     hand.forEach((inst, i) => {
       const x = startX + i * (CARD_W + CARD_GAP)

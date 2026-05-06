@@ -16,7 +16,7 @@ export class MapGenerator {
           id: String(idCounter++),
           type: this.pickNodeType(floor, rng),
           floor,
-          position: { x: (i + 1) * (1280 / (count + 1)), y: 720 - floor * 45 },
+          position: { x: (i + 1) * (1920 / (count + 1)), y: 720 - floor * 45 },
           connectionIds: [],
           isVisited: false,
           isAccessible: floor === 0,
