@@ -82,7 +82,7 @@ export function buildCard(
     const displayName = isUpgraded ? `${def.name}+` : def.name
     const nameY = h * 0.16
     c.add(scene.add.text(0, nameY, displayName, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.max(9, Math.round(w * 0.09))}px`,
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.max(11, Math.round(w * 0.1))}px`,
       color: isUpgraded ? '#884400' : '#1a0a00',
       fontStyle: 'bold',
       wordWrap: { width: w * 0.68 },
@@ -93,7 +93,7 @@ export function buildCard(
     const desc = isUpgraded ? (def.upgradedDescription ?? def.description) : def.description
     const descY = h * 0.27
     c.add(scene.add.text(0, descY, desc, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.max(7, Math.round(w * 0.072))}px`,
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: `${Math.max(10, Math.round(w * 0.09))}px`,
       color: '#2a1500',
       wordWrap: { width: w * 0.68 },
       align: 'center',

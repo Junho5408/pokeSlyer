@@ -94,12 +94,12 @@ export class RewardScene extends Phaser.Scene {
 
     // 타입
     c.add(this.add.text(0, -cardH / 2 + 64, def.type, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '10px', color: '#aaaaaa',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '12px', color: '#aaaaaa',
     }).setOrigin(0.5, 0))
 
     // 설명
-    c.add(this.add.text(0, -cardH / 2 + 82, def.description, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '10px', color: '#dddddd',
+    c.add(this.add.text(0, -cardH / 2 + 84, def.description, {
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '12px', color: '#dddddd',
       wordWrap: { width: cardW - 16 }, align: 'center',
     }).setOrigin(0.5, 0))
 
@@ -108,7 +108,7 @@ export class RewardScene extends Phaser.Scene {
       COMMON: '#cccccc', UNCOMMON: '#44aaff', RARE: '#ffaa44',
     }
     c.add(this.add.text(0, cardH / 2 - 14, def.rarity, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '10px', color: rarityColor[def.rarity] ?? '#cccccc',
+      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: rarityColor[def.rarity] ?? '#cccccc',
     }).setOrigin(0.5))
   }
 }
