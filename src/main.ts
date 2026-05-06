@@ -16,6 +16,7 @@ const config: Phaser.Types.Core.GameConfig = {
   height: 1080,
   parent: 'game-container',
   backgroundColor: '#1a1a2e',
+  resolution: window.devicePixelRatio,
   scene: [
     BootScene,
     MainMenuScene,
