@@ -27,10 +27,10 @@ export class GameOverScene extends Phaser.Scene {
     this.add.rectangle(width / 2, height / 2, width, height, 0x080808)
     this.add.circle(width / 2, height / 2 - 60, 160, 0x330000, 0.5)
 
-    this.add.text(width / 2, height / 2 - 110, '💀', { fontFamily: '"Neo둥근모", monospace', fontSize: '60px' }).setOrigin(0.5)
+    this.add.text(width / 2, height / 2 - 110, '💀', { fontFamily: '"Neo둥근모", monospace', fontSize: '75px' }).setOrigin(0.5)
 
     this.add.text(width / 2, height / 2 - 30, '게임 오버', {
-      fontFamily: '"Neo둥근모", monospace', fontSize: '44px', color: '#ff4444', fontStyle: 'bold',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '55px', color: '#ff4444',
     }).setOrigin(0.5)
 
     // 구분선
@@ -47,16 +47,16 @@ export class GameOverScene extends Phaser.Scene {
     stats.forEach(({ label, value }, i) => {
       const y = height / 2 + 56 + i * 36
       this.add.text(width / 2 - 90, y, label, {
-        fontFamily: '"Neo둥근모", monospace', fontSize: '17px', color: '#888888',
+        fontFamily: '"Neo둥근모", monospace', fontSize: '21px', color: '#888888',
       }).setOrigin(1, 0.5)
       this.add.text(width / 2 - 70, y, value, {
-        fontFamily: '"Neo둥근모", monospace', fontSize: '17px', color: '#ffffff',
+        fontFamily: '"Neo둥근모", monospace', fontSize: '21px', color: '#ffffff',
       }).setOrigin(0, 0.5)
     })
 
     // 다시 시작
     const retryBtn = this.add.text(width / 2 - 90, height - 90, '다시 시작', {
-      fontFamily: '"Neo둥근모", monospace', fontSize: '22px', color: '#aaffaa',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '28px', color: '#aaffaa',
       backgroundColor: '#1a2e1a', padding: { x: 20, y: 10 },
     }).setOrigin(0.5).setInteractive({ useHandCursor: true })
     retryBtn.on('pointerover', () => retryBtn.setStyle({ color: '#ffffff' }))
@@ -68,7 +68,7 @@ export class GameOverScene extends Phaser.Scene {
 
     // 메인 메뉴
     const menuBtn = this.add.text(width / 2 + 90, height - 90, '메인 메뉴', {
-      fontFamily: '"Neo둥근모", monospace', fontSize: '22px', color: '#aaaaaa',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '28px', color: '#aaaaaa',
       backgroundColor: '#1a1a1a', padding: { x: 20, y: 10 },
     }).setOrigin(0.5).setInteractive({ useHandCursor: true })
     menuBtn.on('pointerover', () => menuBtn.setStyle({ color: '#ffffff' }))

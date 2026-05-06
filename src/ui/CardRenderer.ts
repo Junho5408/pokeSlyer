@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 import type { CardDef } from '@t/card.types'
 
-// ── 이미지가 없는 타입용 폴백 색상 ──────────────────────────
+// 카드 이미지가 없는 타입용 폴백 색상 팔레트
 const BASE_COLORS: Record<string, { dark: number; mid: number; accent: number }> = {
   STATUS: { dark: 0x111111, mid: 0x2d2d2d, accent: 0x555555 },
   CURSE:  { dark: 0x060606, mid: 0x101010, accent: 0x222222 },
@@ -20,7 +20,7 @@ const TYPE_LABELS: Record<string, string> = {
   ATTACK: '공격', SKILL: '기술', POWER: '파워', STATUS: '상태', CURSE: '저주',
 }
 
-// 카드 이미지가 있는 타입 (이미지가 곧 카드 프레임)
+// 카드 이미지가 있는 타입 (이미지가 있는 카드 프레임)
 const TYPE_TEXTURES: Record<string, string> = {
   ATTACK: 'card_at',
   SKILL:  'card_sk',
@@ -61,19 +61,18 @@ export function buildCard(
   const hasImage = !!(texKey && scene.textures.exists(texKey))
 
   if (hasImage) {
-    // ── 이미지가 카드 자체 ────────────────────────────────
+    // 카드 이미지가 카드 전체 영역을 채움
     const img = scene.add.image(0, 0, texKey)
     img.setDisplaySize(w, h)
     if (dimmed) img.setAlpha(0.45)
     c.add(img)
 
-    // 마나 코스트 (좌상단 엠블럼 위)
+    // 마나 코스트 (좌상단 원형 뱃지)
     const costX = left + w * 0.145
     const costY = top + h * 0.11
     c.add(scene.add.text(costX, costY, String(def.cost), {
-      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.round(w * 0.13)}px`,
+      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.round(w * 0.16)}px`,
       color: '#ffffff',
-      fontStyle: 'bold',
       stroke: '#000000',
       strokeThickness: Math.round(w * 0.03),
     }).setOrigin(0.5))
@@ -82,9 +81,8 @@ export function buildCard(
     const displayName = isUpgraded ? `${def.name}+` : def.name
     const nameY = h * 0.16
     c.add(scene.add.text(0, nameY, displayName, {
-      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(11, Math.round(w * 0.1))}px`,
+      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(14, Math.round(w * 0.125))}px`,
       color: isUpgraded ? '#884400' : '#1a0a00',
-      fontStyle: 'bold',
       wordWrap: { width: w * 0.68 },
       align: 'center',
     }).setOrigin(0.5, 0))
@@ -93,13 +91,13 @@ export function buildCard(
     const desc = isUpgraded ? (def.upgradedDescription ?? def.description) : def.description
     const descY = h * 0.27
     c.add(scene.add.text(0, descY, desc, {
-      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(10, Math.round(w * 0.09))}px`,
+      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(13, Math.round(w * 0.14))}px`,
       color: '#2a1500',
       wordWrap: { width: w * 0.68 },
       align: 'center',
     }).setOrigin(0.5, 0))
 
-    // 선택/강화 외곽선
+    // 선택/강화 테두리
     if (selected || isUpgraded) {
       const borderG = scene.add.graphics()
       const borderColor = selected ? 0xffdd44 : 0x88aaff
@@ -109,7 +107,7 @@ export function buildCard(
     }
 
   } else {
-    // ── 폴백: STATUS / CURSE (이미지 없음) ──────────────────
+    // 폴백: STATUS / CURSE (이미지 없음) 카드용
     const col = BASE_COLORS[def.type] ?? BASE_COLORS.STATUS
     const headerH = Math.round(h * 0.165)
     const artTop = top + headerH + 2
@@ -155,41 +153,39 @@ export function buildCard(
     c.add(gemG)
 
     c.add(scene.add.text(gemX, gemY, String(def.cost), {
-      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.round(w * 0.11)}px`, color: '#ffdd44', fontStyle: 'bold',
+      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.round(w * 0.14)}px`, color: '#ffdd44',
     }).setOrigin(0.5))
 
     c.add(scene.add.text(left + w - 5, top + 5, TYPE_LABELS[def.type] ?? def.type, {
-      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(8, Math.round(w * 0.075))}px`, color: '#8899bb',
+      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(11, Math.round(w * 0.095))}px`, color: '#8899bb',
     }).setOrigin(1, 0))
 
     const displayName = isUpgraded ? `${def.name}+` : def.name
     c.add(scene.add.text(0, contentTop, displayName, {
-      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(10, Math.round(w * 0.1))}px`,
+      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(13, Math.round(w * 0.125))}px`,
       color: isUpgraded ? '#ffdd88' : '#ffffff',
-      fontStyle: 'bold',
       wordWrap: { width: w - 14 },
       align: 'center',
     }).setOrigin(0.5, 0))
 
     const desc = isUpgraded ? (def.upgradedDescription ?? def.description) : def.description
     c.add(scene.add.text(0, contentTop + Math.round(h * 0.13), desc, {
-      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(8, Math.round(w * 0.075))}px`,
+      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(11, Math.round(w * 0.095))}px`,
       color: '#ccccdd',
       wordWrap: { width: w - 16 },
       align: 'center',
     }).setOrigin(0.5, 0))
   }
 
-  // ── 구매 가격 ──────────────────────────────────────────
+  // 카드 구매 가격 표시 (상점용)
   if (opts.showPrice !== undefined) {
     c.add(scene.add.text(0, bot + Math.round(h * 0.1), `${opts.showPrice}G`, {
-      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(12, Math.round(w * 0.115))}px`,
+      fontFamily: '"Neo둥근모", monospace', fontSize: `${Math.max(15, Math.round(w * 0.14))}px`,
       color: dimmed ? '#665522' : '#ffcc44',
-      fontStyle: 'bold',
     }).setOrigin(0.5))
   }
 
-  // ── 어둡게 처리 오버레이 ───────────────────────────────
+  // 카드 어둡게 처리 오버레이 추가
   if (dimmed) {
     const dimG = scene.add.graphics()
     dimG.fillStyle(0x000000, 0.55)
@@ -197,7 +193,7 @@ export function buildCard(
     c.add(dimG)
   }
 
-  // ── 투명 히트 영역 ─────────────────────────────────────
+  // 카드 클릭 히트 영역 생성
   const hitArea = scene.add.rectangle(0, 0, w, h, 0x000000, 0)
   c.add(hitArea)
 

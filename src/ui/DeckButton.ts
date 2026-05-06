@@ -1,12 +1,12 @@
 import Phaser from 'phaser'
 
 /**
- * 어느 씬에서든 덱 뷰어 오버레이를 열 수 있는 '덱' 버튼을 우상단에 추가한다.
+ * 어느 씬에서든 덱 뷰어를 열 수 있는 '덱' 버튼을 우상단에 추가한다.
  */
 export function addDeckButton(scene: Phaser.Scene): void {
   const { width } = scene.scale
   const btn = scene.add.text(width - 12, 12, '덱 보기', {
-    fontFamily: '"Neo둥근모", monospace', fontSize: '13px', color: '#aaaaaa',
+    fontFamily: '"Neo둥근모", monospace', fontSize: '16px', color: '#aaaaaa',
     backgroundColor: '#1a1a1a', padding: { x: 10, y: 6 },
   }).setOrigin(1, 0).setDepth(100).setInteractive({ useHandCursor: true })
 

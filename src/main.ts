@@ -35,4 +35,6 @@ const config: Phaser.Types.Core.GameConfig = {
   },
 }
 
-new Phaser.Game(config)
+document.fonts.load('16px "Neo둥근모"').finally(() => {
+  new Phaser.Game(config)
+})
