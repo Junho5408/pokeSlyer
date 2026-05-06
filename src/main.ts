@@ -1,3 +1,4 @@
+import '@kfonts/neodgm/index.css'
 import Phaser from 'phaser'
 import { BootScene } from '@scenes/BootScene'
 import { MainMenuScene } from '@scenes/MainMenuScene'

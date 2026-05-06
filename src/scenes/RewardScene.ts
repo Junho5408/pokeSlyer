@@ -22,10 +22,10 @@ export class RewardScene extends Phaser.Scene {
     this.add.rectangle(width / 2, height / 2, width, height, 0x0a0a1a)
 
     this.add.text(width / 2, 55, '카드 보상', {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '30px', color: '#ffdd88', fontStyle: 'bold',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '30px', color: '#ffdd88', fontStyle: 'bold',
     }).setOrigin(0.5)
     this.add.text(width / 2, 96, '카드 1장을 선택하여 덱에 추가하세요', {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '15px', color: '#aaaaaa',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '15px', color: '#aaaaaa',
     }).setOrigin(0.5)
 
     // LootRNG로 3장 랜덤 선택 (중복 없음)
@@ -50,7 +50,7 @@ export class RewardScene extends Phaser.Scene {
     // 스킵 버튼
     const skipBtn = this.add
       .text(width / 2, height - 70, '스킵 (Skip)', {
-        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '18px', color: '#777777',
+        fontFamily: '"Neo둥근모", monospace', fontSize: '18px', color: '#777777',
         backgroundColor: '#1a1a1a', padding: { x: 24, y: 10 },
       })
       .setOrigin(0.5)
@@ -83,23 +83,23 @@ export class RewardScene extends Phaser.Scene {
     // 비용 원
     c.add(this.add.circle(-cardW / 2 + 16, -cardH / 2 + 16, 14, 0x111133))
     c.add(this.add.text(-cardW / 2 + 16, -cardH / 2 + 16, String(def.cost), {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px', color: '#ffdd44', fontStyle: 'bold',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '14px', color: '#ffdd44', fontStyle: 'bold',
     }).setOrigin(0.5))
 
     // 카드명
     c.add(this.add.text(0, -cardH / 2 + 36, def.name, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px', color: '#ffffff', fontStyle: 'bold',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '14px', color: '#ffffff', fontStyle: 'bold',
       wordWrap: { width: cardW - 12 }, align: 'center',
     }).setOrigin(0.5, 0))
 
     // 타입
     c.add(this.add.text(0, -cardH / 2 + 64, def.type, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '12px', color: '#aaaaaa',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '12px', color: '#aaaaaa',
     }).setOrigin(0.5, 0))
 
     // 설명
     c.add(this.add.text(0, -cardH / 2 + 84, def.description, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '12px', color: '#dddddd',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '12px', color: '#dddddd',
       wordWrap: { width: cardW - 16 }, align: 'center',
     }).setOrigin(0.5, 0))
 
@@ -108,7 +108,7 @@ export class RewardScene extends Phaser.Scene {
       COMMON: '#cccccc', UNCOMMON: '#44aaff', RARE: '#ffaa44',
     }
     c.add(this.add.text(0, cardH / 2 - 14, def.rarity, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: rarityColor[def.rarity] ?? '#cccccc',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '13px', color: rarityColor[def.rarity] ?? '#cccccc',
     }).setOrigin(0.5))
   }
 }

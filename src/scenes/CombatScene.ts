@@ -108,12 +108,12 @@ export class CombatScene extends Phaser.Scene {
     this.playerHud = this.add.container(40, 660)
 
     // 더미 카운트
-    this.pileText = this.add.text(40, 1040, '', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '17px', color: '#888888' })
+    this.pileText = this.add.text(40, 1040, '', { fontFamily: '"Neo둥근모", monospace', fontSize: '17px', color: '#888888' })
 
     // 턴 종료 버튼
     this.endTurnBtn = this.add
       .text(1800, 920, '턴 종료 [E]', {
-        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '22px', color: '#ffffff',
+        fontFamily: '"Neo둥근모", monospace', fontSize: '22px', color: '#ffffff',
         backgroundColor: '#334422', padding: { x: 18, y: 12 },
       })
       .setOrigin(0.5)
@@ -125,12 +125,12 @@ export class CombatScene extends Phaser.Scene {
 
     // 전투 로그
     this.logText = this.add.text(1300, 660, '', {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '15px', color: '#999999', wordWrap: { width: 560 },
+      fontFamily: '"Neo둥근모", monospace', fontSize: '15px', color: '#999999', wordWrap: { width: 560 },
     })
 
     // 알림 텍스트
     this.alertText = this.add
-      .text(960, 580, '', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '26px', color: '#ff6666', fontStyle: 'bold' })
+      .text(960, 580, '', { fontFamily: '"Neo둥근모", monospace', fontSize: '26px', color: '#ff6666', fontStyle: 'bold' })
       .setOrigin(0.5)
       .setAlpha(0)
   }
@@ -157,26 +157,26 @@ export class CombatScene extends Phaser.Scene {
     const hpFill = Math.max(0, r.hp / r.maxHp)
     this.playerHud.add(this.add.rectangle(0, 0, bw * hpFill, 22, 0xcc3333).setOrigin(0, 0.5))
     this.playerHud.add(
-      this.add.text(bw / 2, 0, `HP ${r.hp} / ${r.maxHp}`, { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px', color: '#fff' }).setOrigin(0.5)
+      this.add.text(bw / 2, 0, `HP ${r.hp} / ${r.maxHp}`, { fontFamily: '"Neo둥근모", monospace', fontSize: '14px', color: '#fff' }).setOrigin(0.5)
     )
 
     this.playerHud.add(
-      this.add.text(0, 26, `🛡 방어도: ${r.block}`, { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '15px', color: '#88aaff' })
+      this.add.text(0, 26, `🛡 방어도: ${r.block}`, { fontFamily: '"Neo둥근모", monospace', fontSize: '15px', color: '#88aaff' })
     )
     this.playerHud.add(
       this.add.text(0, 48, `⚡ 에너지: ${r.energy} / ${r.maxEnergy}`, {
-        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '15px', color: r.energy > 0 ? '#ffdd44' : '#888888',
+        fontFamily: '"Neo둥근모", monospace', fontSize: '15px', color: r.energy > 0 ? '#ffdd44' : '#888888',
       })
     )
 
     const p = this.manager.state.player
     if (p.statuses.length > 0) {
       const str = p.statuses.map(s => `[${s.id} ${s.stacks}]`).join(' ')
-      this.playerHud.add(this.add.text(0, 70, str, { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#aaffaa' }))
+      this.playerHud.add(this.add.text(0, 70, str, { fontFamily: '"Neo둥근모", monospace', fontSize: '13px', color: '#aaffaa' }))
     }
 
     this.playerHud.add(
-      this.add.text(0, -22, '전사', { fontFamily: '"Noto Sans KR", sans-serif', fontSize: '17px', color: '#fff', fontStyle: 'bold' })
+      this.add.text(0, -22, '전사', { fontFamily: '"Neo둥근모", monospace', fontSize: '17px', color: '#fff', fontStyle: 'bold' })
     )
   }
 
@@ -250,7 +250,7 @@ export class CombatScene extends Phaser.Scene {
       intentBg.fillRoundedRect(-46, headY - headR - 30, 92, 22, 5)
       c.add(intentBg)
       c.add(this.add.text(0, headY - headR - 19, this.intentLabel(intent), {
-        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '14px', color: '#ffffff',
+        fontFamily: '"Neo둥근모", monospace', fontSize: '14px', color: '#ffffff',
       }).setOrigin(0.5))
     }
 
@@ -260,7 +260,7 @@ export class CombatScene extends Phaser.Scene {
     namePlateG.fillRoundedRect(-50, headY - headR - (intent ? 54 : 26), 100, 20, 4)
     c.add(namePlateG)
     c.add(this.add.text(0, headY - headR - (intent ? 43 : 15), enemy.name, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '15px', color: isBoss ? '#ffaaaa' : '#ffffff', fontStyle: 'bold',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '15px', color: isBoss ? '#ffaaaa' : '#ffffff', fontStyle: 'bold',
     }).setOrigin(0.5))
 
     // HP 바
@@ -278,7 +278,7 @@ export class CombatScene extends Phaser.Scene {
     hpG.strokeRoundedRect(-bw / 2, barY, bw, 18, 3)
     c.add(hpG)
     c.add(this.add.text(0, barY + 7, `${enemy.resource.hp} / ${enemy.resource.maxHp}`, {
-      fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#ffffff',
+      fontFamily: '"Neo둥근모", monospace', fontSize: '13px', color: '#ffffff',
       stroke: '#000000', strokeThickness: 2,
     }).setOrigin(0.5))
 
@@ -290,7 +290,7 @@ export class CombatScene extends Phaser.Scene {
       blockG.fillRoundedRect(-28, extraY, 56, 18, 5)
       c.add(blockG)
       c.add(this.add.text(0, extraY + 9, `🛡 ${enemy.resource.block}`, {
-        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '13px', color: '#aaccff',
+        fontFamily: '"Neo둥근모", monospace', fontSize: '13px', color: '#aaccff',
       }).setOrigin(0.5))
       extraY += 24
     }
@@ -299,7 +299,7 @@ export class CombatScene extends Phaser.Scene {
     if (enemy.statuses.length > 0) {
       const str = enemy.statuses.map(s => `${s.id}:${s.stacks}`).join(' ')
       c.add(this.add.text(0, extraY, str, {
-        fontFamily: '"Noto Sans KR", sans-serif', fontSize: '12px', color: '#ffaaaa',
+        fontFamily: '"Neo둥근모", monospace', fontSize: '12px', color: '#ffaaaa',
       }).setOrigin(0.5, 0))
     }
 
