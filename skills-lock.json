@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "memory-bank": {
+      "source": "Nagendhra-web/memory-bank",
+      "sourceType": "github",
+      "skillPath": "skills/memory-bank/SKILL.md",
+      "computedHash": "11b255e6d63cd0d908d57bc79cd24e429017e3e29039cee646803d6bf7f336f0"
+    }
+  }
+}
